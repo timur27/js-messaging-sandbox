@@ -6,8 +6,8 @@ const app = express()
 
 app.post('/message', (req, res, next) => {
     // get query params (for now 2) and create an object from them 
-    var msgName = req.query.name;
-    var msgDesc = req.query.desc; 
+    var msgName = req.query.name
+    var msgDesc = req.query.desc 
 
     var importantMessage = {
         id: uuid(),
@@ -15,7 +15,7 @@ app.post('/message', (req, res, next) => {
         desc: msgDesc
     }
 
-    publisher.sendSampleMsg(importantMessage);
+    publisher.sendSampleMsg(importantMessage)
 });
 
 app.listen(8080, () => {
