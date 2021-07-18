@@ -21,6 +21,7 @@ var setup = () => {
             console.log('waiting for msgs on queue: ' + queue)
             channel.consume(queue, (msg) => { 
                 console.log('consumed msg: ' + msg.content.toString())
+                channel.ack(msg);
             })
         })
     })
