@@ -1,0 +1,3 @@
+#!/bin/sh
+. "$(dirname "$0")/husky.sh"
+cd ./bar && npx lint-staged 
