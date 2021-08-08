@@ -16,6 +16,7 @@ app.post("/message", (req, res, next) => {
   };
 
   publisher.sendSampleMsg(importantMessage);
+  res.end();
 });
 
 app.listen(8080, () => {

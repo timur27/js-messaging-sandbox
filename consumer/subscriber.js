@@ -1,7 +1,7 @@
 var amqp = require("amqplib/callback_api");
 
-var sendSampleMsg = (msg) => {
-  console.log("here we are: " + amqp);
+var setup = () => {
+  console.log("Setting up the subscriber");
   amqp.connect("amqp://localhost", (error0, connection) => {
     if (error0) {
       throw error0;
@@ -12,16 +12,19 @@ var sendSampleMsg = (msg) => {
         throw error1;
       }
 
-      let queue = "foo-msgs";
+      let queue = "msgs";
 
       channel.assertQueue(queue, {
         durable: false,
       });
 
-      channel.sendToQueue(queue, Buffer.from(JSON.stringify(msg)));
-      console.log(" [x] sent %s", msg);
+      console.log("waiting for msgs on queue: " + queue);
+      channel.consume(queue, (msg) => {
+        console.log("consumed msg: " + msg.content.toString());
+        channel.ack(msg);
+      });
     });
   });
 };
 
-module.exports = { sendSampleMsg };
+module.exports = { setup };
