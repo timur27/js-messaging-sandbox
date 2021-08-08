@@ -3,7 +3,7 @@ const express = require("express");
 
 const app = express();
 
-app.listen(8081, () => {
+app.listen(process.env.PORT || '8081', () => {
   console.log("The server started listeting...");
 });
 
