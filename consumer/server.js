@@ -1,4 +1,4 @@
-const subscriber = require("./subscriber");
+const subscriber = require("./worker");
 const express = require("express");
 
 const app = express();
