@@ -27,7 +27,7 @@ var setup = () => {
         setTimeout(() => {
           console.log("consumed msg: " + msg.content.toString());
           channel.ack(msg);
-        }, 5000);
+        }, 2000);
       }
     });
   });
